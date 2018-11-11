@@ -1,26 +1,52 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import { commands, window } from 'vscode';
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Dolittle. All rights reserved.
+ *  Licensed under the MIT License. See LICENSE in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
+import { loadProjectConfiguration } from "./Configuration/ProjectConfiguration";
+
+const vscode = require('vscode');
+
+/**
+ * @param {import("vscode").ExtensionContext} context
+ */
 function activate(context) {
-
-    // Use the console to output diagnostic information (console.log) and errors (console.error)
-    // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "dolittle-feature-explorer" is now active!');
-
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with  registerCommand
-    // The commandId parameter must match the command field in package.json
-    let disposable = commands.registerCommand('extension.sayHello', () => {
-        // The code you place here will be executed every time your command is executed
-
-        // Display a message box to the user
-        window.showInformationMessage('Hello World!');
+    vscode.commands.registerCommand('extension.startDolittleFeatureExplorer', () => {});
+    vscode.commands.registerCommand('extension.reloadConfiguration', () => {
+        loadProjectConfiguration()
+            .then( (config) => {
+                buildContext(context, config);
+            }).catch(err => {
+                throw err;
+            });
     });
+    console.log('Congratulations, your extension "dolittle-feature-explorer" is now active!');
+    
+    loadProjectConfiguration().then( config => {
+        buildContext(context, config);
+    }).catch( err => { throw err });
 
-    context.subscriptions.push(disposable);
+
+    // const featureDependenciesProvider = new FeatureProvider(vscode.workspace.rootPath);
+    // vscode.window.registerTreeDataProvider('featureDependencies', featureDependenciesProvider);
+	// vscode.commands.registerCommand('featureDependencies.refresh', () => vscode.window.showInformationMessage('Successfully called refresh'));
+	// vscode.commands.registerCommand('featureDependencies.addCommand', node => vscode.window.showInformationMessage('Successfully called add command'));
+
+    // new FeatureExplorer(context);
+}
+/**
+ *
+ * @param {import("vscode").ExtensionContext} context
+ * @param {import('./Configuration/ProjectConfiguration').ProjectConfiguration} projectConfiguration
+ */
+function buildContext(context, projectConfiguration) {
+    
+    vscode.window.showInformationMessage('Loaded Dolittle project configurations');
+    console.log(projectConfiguration.application);
+    projectConfiguration.boundedContexts.forEach( bc => {
+        console.log(bc);
+    });
+    
 }
 const _activate = activate;
 export { _activate as activate };

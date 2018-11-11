@@ -16,7 +16,8 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "workspaceContains:**/application.json",
+        "onCommand:extension.startDolittleFeatureExplorer"
     ],
     "main": "bin/extension.js",
     "module": "bin/extension.js",
@@ -26,8 +27,12 @@
     "contributes": {
         "commands": [
             {
-                "command": "extension.sayHello",
-                "title": "Hello World"
+                "command": "extension.startDolittleFeatureExplorer",
+                "title": "Dolittle Feature Explorer: Start"
+            },
+            {
+                "command": "extension.reloadConfiguration",
+                "title": "Dolittle Feature Explorer: Reload Configurations"
             }
         ]
     },
@@ -56,6 +61,9 @@
     },
     "dependencies": {
         "babel-runtime": "^6.26.0",
-        "@dolittle/cli": "^2.0.0-alpha2.40"
+        "@dolittle/cli": "^2.0.0-alpha2.40",
+
+        "fs-extra": "^7.0.0",
+        "shelljs": "^0.8.2"
     }
 }
