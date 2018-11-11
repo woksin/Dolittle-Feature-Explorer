@@ -1,0 +1,40 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.deactivate = exports.activate = undefined;
+
+var _vscode = require('vscode');
+
+// this method is called when your extension is activated
+// your extension is activated the very first time the command is executed
+function activate(context) {
+
+    // Use the console to output diagnostic information (console.log) and errors (console.error)
+    // This line of code will only be executed once when your extension is activated
+    console.log('Congratulations, your extension "dolittle-feature-explorer" is now active!');
+
+    // The command has been defined in the package.json file
+    // Now provide the implementation of the command with  registerCommand
+    // The commandId parameter must match the command field in package.json
+    var disposable = _vscode.commands.registerCommand('extension.sayHello', function () {
+        // The code you place here will be executed every time your command is executed
+
+        // Display a message box to the user
+        _vscode.window.showInformationMessage('Hello World!');
+    });
+
+    context.subscriptions.push(disposable);
+} // The module 'vscode' contains the VS Code extensibility API
+// Import the module and reference it with the alias vscode in your code below
+
+var _activate = activate;
+exports.activate = _activate;
+
+// this method is called when your extension is deactivated
+
+function deactivate() {}
+var _deactivate = deactivate;
+exports.deactivate = _deactivate;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL1NvdXJjZS9leHRlbnNpb24uanMiXSwibmFtZXMiOlsiYWN0aXZhdGUiLCJjb250ZXh0IiwiY29uc29sZSIsImxvZyIsImRpc3Bvc2FibGUiLCJjb21tYW5kcyIsInJlZ2lzdGVyQ29tbWFuZCIsIndpbmRvdyIsInNob3dJbmZvcm1hdGlvbk1lc3NhZ2UiLCJzdWJzY3JpcHRpb25zIiwicHVzaCIsIl9hY3RpdmF0ZSIsImRlYWN0aXZhdGUiLCJfZGVhY3RpdmF0ZSJdLCJtYXBwaW5ncyI6Ijs7Ozs7OztBQUVBOztBQUVBO0FBQ0E7QUFDQSxTQUFTQSxRQUFULENBQWtCQyxPQUFsQixFQUEyQjs7QUFFdkI7QUFDQTtBQUNBQyxZQUFRQyxHQUFSLENBQVksNEVBQVo7O0FBRUE7QUFDQTtBQUNBO0FBQ0EsUUFBSUMsYUFBYUMsaUJBQVNDLGVBQVQsQ0FBeUIsb0JBQXpCLEVBQStDLFlBQU07QUFDbEU7O0FBRUE7QUFDQUMsdUJBQU9DLHNCQUFQLENBQThCLGNBQTlCO0FBQ0gsS0FMZ0IsQ0FBakI7O0FBT0FQLFlBQVFRLGFBQVIsQ0FBc0JDLElBQXRCLENBQTJCTixVQUEzQjtBQUNILEMsQ0F2QkQ7QUFDQTs7QUF1QkEsSUFBTU8sWUFBWVgsUUFBbEI7UUFDc0JBLFEsR0FBYlcsUzs7QUFFVDs7QUFDQSxTQUFTQyxVQUFULEdBQXNCLENBQ3JCO0FBQ0QsSUFBTUMsY0FBY0QsVUFBcEI7UUFDd0JBLFUsR0FBZkMsVyIsImZpbGUiOiJleHRlbnNpb24uanMiLCJzb3VyY2VzQ29udGVudCI6WyIvLyBUaGUgbW9kdWxlICd2c2NvZGUnIGNvbnRhaW5zIHRoZSBWUyBDb2RlIGV4dGVuc2liaWxpdHkgQVBJXG4vLyBJbXBvcnQgdGhlIG1vZHVsZSBhbmQgcmVmZXJlbmNlIGl0IHdpdGggdGhlIGFsaWFzIHZzY29kZSBpbiB5b3VyIGNvZGUgYmVsb3dcbmltcG9ydCB7IGNvbW1hbmRzLCB3aW5kb3cgfSBmcm9tICd2c2NvZGUnO1xuXG4vLyB0aGlzIG1ldGhvZCBpcyBjYWxsZWQgd2hlbiB5b3VyIGV4dGVuc2lvbiBpcyBhY3RpdmF0ZWRcbi8vIHlvdXIgZXh0ZW5zaW9uIGlzIGFjdGl2YXRlZCB0aGUgdmVyeSBmaXJzdCB0aW1lIHRoZSBjb21tYW5kIGlzIGV4ZWN1dGVkXG5mdW5jdGlvbiBhY3RpdmF0ZShjb250ZXh0KSB7XG5cbiAgICAvLyBVc2UgdGhlIGNvbnNvbGUgdG8gb3V0cHV0IGRpYWdub3N0aWMgaW5mb3JtYXRpb24gKGNvbnNvbGUubG9nKSBhbmQgZXJyb3JzIChjb25zb2xlLmVycm9yKVxuICAgIC8vIFRoaXMgbGluZSBvZiBjb2RlIHdpbGwgb25seSBiZSBleGVjdXRlZCBvbmNlIHdoZW4geW91ciBleHRlbnNpb24gaXMgYWN0aXZhdGVkXG4gICAgY29uc29sZS5sb2coJ0NvbmdyYXR1bGF0aW9ucywgeW91ciBleHRlbnNpb24gXCJkb2xpdHRsZS1mZWF0dXJlLWV4cGxvcmVyXCIgaXMgbm93IGFjdGl2ZSEnKTtcblxuICAgIC8vIFRoZSBjb21tYW5kIGhhcyBiZWVuIGRlZmluZWQgaW4gdGhlIHBhY2thZ2UuanNvbiBmaWxlXG4gICAgLy8gTm93IHByb3ZpZGUgdGhlIGltcGxlbWVudGF0aW9uIG9mIHRoZSBjb21tYW5kIHdpdGggIHJlZ2lzdGVyQ29tbWFuZFxuICAgIC8vIFRoZSBjb21tYW5kSWQgcGFyYW1ldGVyIG11c3QgbWF0Y2ggdGhlIGNvbW1hbmQgZmllbGQgaW4gcGFja2FnZS5qc29uXG4gICAgbGV0IGRpc3Bvc2FibGUgPSBjb21tYW5kcy5yZWdpc3RlckNvbW1hbmQoJ2V4dGVuc2lvbi5zYXlIZWxsbycsICgpID0+IHtcbiAgICAgICAgLy8gVGhlIGNvZGUgeW91IHBsYWNlIGhlcmUgd2lsbCBiZSBleGVjdXRlZCBldmVyeSB0aW1lIHlvdXIgY29tbWFuZCBpcyBleGVjdXRlZFxuXG4gICAgICAgIC8vIERpc3BsYXkgYSBtZXNzYWdlIGJveCB0byB0aGUgdXNlclxuICAgICAgICB3aW5kb3cuc2hvd0luZm9ybWF0aW9uTWVzc2FnZSgnSGVsbG8gV29ybGQhJyk7XG4gICAgfSk7XG5cbiAgICBjb250ZXh0LnN1YnNjcmlwdGlvbnMucHVzaChkaXNwb3NhYmxlKTtcbn1cbmNvbnN0IF9hY3RpdmF0ZSA9IGFjdGl2YXRlO1xuZXhwb3J0IHsgX2FjdGl2YXRlIGFzIGFjdGl2YXRlIH07XG5cbi8vIHRoaXMgbWV0aG9kIGlzIGNhbGxlZCB3aGVuIHlvdXIgZXh0ZW5zaW9uIGlzIGRlYWN0aXZhdGVkXG5mdW5jdGlvbiBkZWFjdGl2YXRlKCkge1xufVxuY29uc3QgX2RlYWN0aXZhdGUgPSBkZWFjdGl2YXRlO1xuZXhwb3J0IHsgX2RlYWN0aXZhdGUgYXMgZGVhY3RpdmF0ZSB9OyJdfQ==
